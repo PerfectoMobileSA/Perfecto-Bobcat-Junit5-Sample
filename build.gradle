@@ -1,0 +1,83 @@
+group '@group@'
+version '@version@'
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenLocal()
+        mavenCentral()
+
+    }
+    dependencies {
+        classpath 'io.qameta.allure:allure-gradle:2.5'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'io.qameta.allure'
+
+sourceCompatibility = 1.8
+
+def bobcatVersion = '2.3.0'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url 'https://repo1.perfectomobile.com/public/repositories/maven'
+    }
+}
+
+dependencies {
+    compile group: 'com.cognifide.qa.bb', name: 'bb-core', version: bobcatVersion
+    compile group: 'com.cognifide.qa.bb', name: 'bb-junit5', version: bobcatVersion
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.5.2'
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.5.2")
+    testRuntime("org.junit.platform:junit-platform-launcher:1.5.2")
+
+        compile ('com.perfecto.reporting-sdk:reportium-java:+') {
+            exclude group: "org.seleniumhq.selenium", module: "selenium-remote-driver"
+            exclude group: "org.seleniumhq.selenium", module: "selenium-java"
+            exclude group: "org.seleniumhq.selenium", module: "selenium-api"
+        }
+        compile 'com.perfectomobile:http-client:+'
+        compile 'com.perfectomobile:pm-webdriver:+'
+}
+
+
+def profiles = [
+        'perfectoAndroid': 'perfectoAndroid'
+]
+
+task loadProperties {
+    def profile = System.getProperty('profile', 'default')
+    if (!profile.equals('default')) {
+        System.setProperty("bobcat.config.contexts", profiles[profile])
+    }
+}
+
+test.dependsOn loadProperties
+
+test {
+    useJUnitPlatform()
+    systemProperties = System.getProperties()
+    systemProperty 'junit.jupiter.extensions.autodetection.enabled', 'true'
+    maxParallelForks = 4
+    testLogging.showStandardStreams = true
+
+}
+
+gradle.projectsEvaluated {
+    test.finalizedBy allureReport
+}
+
+allure {
+    version = '2.7.0'
+    autoconfigure = true
+    aspectjweaver = true
+    aspectjVersion = '1.8.10'
+
+    useJUnit5 {
+        version = '2.7.0'
+    }
+}

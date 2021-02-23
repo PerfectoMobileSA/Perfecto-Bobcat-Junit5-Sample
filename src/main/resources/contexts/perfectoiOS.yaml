@@ -1,0 +1,8 @@
+perfectoiOS:
+  webdriver.type: remote
+  webdriver.cap.automationName: Appium
+  webdriver.cap.model: iPhone.*
+  webdriver.cap.browserName: Safari
+  webdriver.mobile: true
+  webdriver.reusable: true
+  webdriver.maximize: false

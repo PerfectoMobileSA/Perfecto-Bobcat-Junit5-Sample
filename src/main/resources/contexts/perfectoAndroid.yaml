@@ -1,0 +1,8 @@
+perfectoAndroid:
+  webdriver.type: remote
+  webdriver.cap.automationName: Appium
+  webdriver.cap.model: Galaxy.*
+  webdriver.cap.browserName: Chrome
+  webdriver.mobile: true
+  webdriver.reusable: true
+  webdriver.maximize: false

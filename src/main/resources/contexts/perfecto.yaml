@@ -1,0 +1,12 @@
+perfecto:
+  webdriver.type: remote
+#  webdriver.cap.automationName: Appium
+#  webdriver.cap.model: Galaxy S.*
+#  webdriver.cap.browserName: Chrome
+#  webdriver.mobile: true
+  webdriver.cap.platformName: Windows
+  webdriver.cap.platformVersion: 10
+  webdriver.cap.browserName: Chrome
+  webdriver.cap.browserVersion: latest
+  webdriver.reusable: true
+  webdriver.maximize: false
