@@ -43,3 +43,7 @@ There are several prerequisite dependencies you should install on your machine p
 3. This [link](https://developers.perfectomobile.com/display/PD/Generate+security+tokens) will showcase how to generate Perfecto security token.</br>
 
 4. Note: Enter the physical location of gradle if it wasnt identified by Jenkins while executing.</br>
+
+#### Known Issue:
+
+When webdriver.reusable property is set to True, the driver instance remains open even after running all the tests, Due to this [issue](https://github.com/wttech/bobcat/issues/437), the build will be failure even though all the tests passes.
