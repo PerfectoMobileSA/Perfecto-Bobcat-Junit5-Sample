@@ -23,14 +23,16 @@ There are several prerequisite dependencies you should install on your machine p
 
 1. Clone/ Download this project.</br>
 
-2. Run gradle tasks: gradle clean build test -Dwebdriver.url={Perfecto cloud url. E.g. https://demo.perfectomobile.com/nexperience/perfectomobile/wd/hub/fast} -Dwebdriver.cap.securityToken={Perfecto Security token} -Dbobcat.config.contexts={Bobcat context. E.g. chrome/firefox/perfectoAndroid}</br>
+2. Run gradle tasks:</br> 
+
+	`gradle clean build test -Dwebdriver.url={Perfecto cloud url. E.g. https://demo.perfectomobile.com/nexperience/perfectomobile/wd/hub/fast} -Dwebdriver.cap.securityToken={Perfecto Security token} -Dbobcat.config.contexts={Bobcat context. E.g. chrome/firefox/perfectoAndroid}`</br>
 
 ### Jenkins CI Dashboard integration:
 1. Setup a job in any CI like Jenkins.</br>
 2. Create a build task -> Execute shell.</br>
 3. Enter the below shell command and run your job :</br>
 
-	`gradle clean build test -Dwebdriver.url={Perfecto cloud url. E.g. https://demo.perfectomobile.com/nexperience/perfectomobile/wd/hub/fast} -Dwebdriver.cap.securityToken={Perfecto security token} -Dreportium-job-name=${JOB_NAME} -Dreportium-job-number=${BUILD_NUMBER}` </br>
+	`gradle clean build test -Dwebdriver.url={Perfecto cloud url. E.g. https://demo.perfectomobile.com/nexperience/perfectomobile/wd/hub/fast} -Dwebdriver.cap.securityToken={Perfecto security token} -Dreportium-job-name=${JOB_NAME} -Dreportium-job-number=${BUILD_NUMBER} -Dbobcat.config.contexts={Bobcat context. E.g. chrome/firefox/perfectoAndroid}` </br>
 
 #### Note:
 
@@ -41,3 +43,7 @@ There are several prerequisite dependencies you should install on your machine p
 3. This [link](https://developers.perfectomobile.com/display/PD/Generate+security+tokens) will showcase how to generate Perfecto security token.</br>
 
 4. Note: Enter the physical location of gradle if it wasnt identified by Jenkins while executing.</br>
+
+#### Known Issue:
+
+When webdriver.reusable property is set to True, the driver instance remains open even after running all the tests, Due to this [issue](https://github.com/wttech/bobcat/issues/437), the build will be failure even though all the tests passes.
