@@ -23,7 +23,8 @@ There are several prerequisite dependencies you should install on your machine p
 
 1. Clone/ Download this project.</br>
 
-2. Run gradle tasks: 
+2. Run gradle tasks:</br> 
+
 	`gradle clean build test -Dwebdriver.url={Perfecto cloud url. E.g. https://demo.perfectomobile.com/nexperience/perfectomobile/wd/hub/fast} -Dwebdriver.cap.securityToken={Perfecto Security token} -Dbobcat.config.contexts={Bobcat context. E.g. chrome/firefox/perfectoAndroid}`</br>
 
 ### Jenkins CI Dashboard integration:
