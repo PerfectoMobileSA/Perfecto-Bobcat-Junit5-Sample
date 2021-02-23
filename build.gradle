@@ -16,7 +16,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'io.qameta.allure'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.9
 
 def bobcatVersion = '2.3.0'
 
