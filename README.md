@@ -32,7 +32,7 @@ There are several prerequisite dependencies you should install on your machine p
 2. Create a build task -> Execute shell.</br>
 3. Enter the below shell command and run your job :</br>
 
-	`gradle clean build test -Dwebdriver.url={Perfecto cloud url. E.g. https://demo.perfectomobile.com/nexperience/perfectomobile/wd/hub/fast} -Dwebdriver.cap.securityToken={Perfecto security token} -Dreportium-job-name=${JOB_NAME} -Dreportium-job-number=${BUILD_NUMBER}` </br>
+	`gradle clean build test -Dwebdriver.url={Perfecto cloud url. E.g. https://demo.perfectomobile.com/nexperience/perfectomobile/wd/hub/fast} -Dwebdriver.cap.securityToken={Perfecto security token} -Dreportium-job-name=${JOB_NAME} -Dreportium-job-number=${BUILD_NUMBER} -Dbobcat.config.contexts={Bobcat context. E.g. chrome/firefox/perfectoAndroid}` </br>
 
 #### Note:
 
